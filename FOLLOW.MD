@@ -166,3 +166,22 @@ Registro cumulativo de pedidos, decisões, alterações, verificações e pendê
 - Confirmada sessão autenticada do proprietário no navegador. Preparada autenticação do Git pelo gerenciador oficial, ainda sem resposta utilizável nesta observação.
 - Alternativa escolhida: publicar os arquivos revisados pela sessão do navegador, preservando o histórico remoto. Uploads serão separados por pasta; após publicação, reconciliar histórico local sem force push.
 - Nenhuma funcionalidade alterada; configuração alvo permanece Pages gratuito em main /docs.
+
+### Envio concluído e Pages ativado — 2026-09-15T20:37:53-03:00
+
+- Autenticação pelo gerenciador Git não apresentou resultado utilizável; tentativa interrompida sem credencial criada ou divulgada.
+- Pela sessão autenticada do navegador, publicados quatro commits preservando o commit inicial: 8521d40 (sete arquivos da raiz), c56a1a7 (cinco arquivos de docs), 38b49fd (doze imagens) e cd69595 (verificador em scripts).
+- Comparados os 25 arquivos remotos com a cópia local: PNGs idênticos byte a byte e textos idênticos desconsiderando CRLF/LF. Upload por navegador preservou CRLF em alguns textos; nenhuma diferença funcional encontrada.
+- GitHub Pages ativado com Deploy from a branch, main, /docs. Interface confirmou GitHub Pages source saved e construção a partir de /docs. HTTPS obrigatório no domínio padrão; nenhum plano pago ou domínio contratado.
+- Publicação acessível ainda em verificação; o resultado será registrado na próxima entrada. Requisitos de sigilo mantidos, checagem pública passou antes do envio.
+
+### Publicação verificada — 2026-09-15T20:38:19-03:00
+
+- Site acessível em https://vitudanas.github.io/Site_skins_cs2/ com título DNA da Skin, catálogo e bancada renderizados.
+- Teste na versão pública: Experimentar combinação criou dois adesivos e exibiu controles de rotação/tamanho e contador 2 / 5; troca para AK-47 Neon Rider funcionou e limpou a composição conforme comportamento existente.
+- Inspeção das 17 imagens presentes após aplicar sugestão: todas carregadas, sem imagem quebrada.
+- Histórico local anterior preservado na branch local-publication-backup. main local realinhada ao histórico remoto por reset mixed, mantendo os arquivos de trabalho e os registros novos; nenhum force push ou exclusão de arquivos.
+- FOLLOW.MD e CONTINUAR_NO_CODEX.md atualizados para documentar a conclusão e enviados pelo navegador na etapa final. Funcionalidades do site preservadas; nenhum dado privado incluído.
+- REQ-001 e retomadas de publicação: concluídos. Hospedagem gratuita Pages ativa em main /docs com HTTPS. Conector GitHub ainda retorna 403 e Git local ainda sem autenticação utilizável; esses acessos não impediram o envio por navegador.
+
+- Correção final (2026-09-15T20:38:27-03:00): a checagem de whitespace detectou CRLF misturado nas novas entradas documentais; normalizadas as quebras de linha de FOLLOW.MD e CONTINUAR_NO_CODEX.md para LF antes do upload final, sem alterar o conteúdo histórico.

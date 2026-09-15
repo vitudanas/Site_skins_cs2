@@ -29,3 +29,17 @@ Não afirmar que existe visualização 3D fiel, catálogo completo, integração
 - Validação pública e whitespace passaram. Push local falhou por ausência de autenticação; conector GitHub retornou 403 ao criar blob apesar de metadados indicarem permissão.
 - Após autenticação, conferir remoto, revisar novo diff, executar a checagem e enviar main sem force push. Em seguida ativar e verificar Pages em main /docs.
 - As observações anteriores sobre ausência de .git e estado inicial referem-se à entrega anterior; esta entrada atualiza o estado sem apagar o histórico.
+
+## Publicação realizada — 2026-09-15T20:37:53-03:00
+
+- Os 25 arquivos já estão publicados na branch main por quatro commits via navegador autenticado, preservando o commit inicial. Estado anterior de envio bloqueado foi superado pela alternativa de navegador; conector segue retornando 403.
+- Pages ativado em main /docs, com HTTPS obrigatório e sem contratar serviços. Endereço: https://vitudanas.github.io/Site_skins_cs2/ . Verificação final de disponibilidade em andamento neste registro.
+- Arquivos remotos comparados com os locais: imagens idênticas e textos equivalentes após normalizar CRLF/LF.
+
+## Estado final — 2026-09-15T20:38:19-03:00
+
+- Site publicado e verificado: https://vitudanas.github.io/Site_skins_cs2/ . Pages em main /docs com HTTPS, sem plano pago.
+- Composição de adesivos, troca de skin e carregamento de imagens testados na versão pública. Os 25 arquivos foram conferidos contra a cópia local.
+- main local usa o histórico remoto; branch local-publication-backup preserva os commits anteriores de preparação. Nenhum force push realizado.
+- Para futuras alterações, ler AGENTS.md e FOLLOW.MD, registrar pedidos/ações com relógio real, revisar conteúdo público e executar node scripts/check-public.cjs antes de enviar.
+- A sessão autenticada do navegador permitiu publicar. Conector e autenticação Git local ainda precisam ser corrigidos se forem usados em próximos envios; não pedir nem registrar tokens na conversa.

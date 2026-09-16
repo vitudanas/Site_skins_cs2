@@ -8,6 +8,15 @@ const context = {window: {}};
 vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../docs/data.js'), 'utf8'), context);
 const catalog = context.window.CATALOG;
 const draft = {skinIndex: 0, mood: 'harmonia', placed: [{id: 'crown', x: 65, y: 37, rotation: 22, scale: 1.2}]};
+test('back-side placements survive storage, history, links and backups without altering old front crafts',()=>{
+  const back={...draft,placed:[{...draft.placed[0],face:'back'}]},storage=memory();
+  assert.equal(Craft.normalize({...back,placed:[{...back.placed[0],face:'invalid'}]},catalog),null);
+  assert.deepEqual(Craft.normalize(draft,catalog),draft);
+  Craft.write(storage,back,[]);assert.deepEqual(Craft.read(storage,catalog).draft,back);
+  assert.deepEqual(Craft.decode(Craft.encode(back,catalog),catalog),back);
+  assert.deepEqual(Craft.importBackup(Craft.backup(back,[]),catalog).draft,back);
+  const history=Craft.timeline(draft);history.record(back);assert.deepEqual(history.undo(),draft);assert.deepEqual(history.redo(),back);
+});
 function memory() {let value; return {getItem: () => value, setItem: (_key, next) => {value = next;}};}
 test('reload preserves placement, rotation, scale and named collection', () => {
   const storage = memory();
@@ -45,13 +54,14 @@ test('every skin and mood produces valid curated variations at random boundaries
     }
   }
 });
-function boot(storage = memory(), hash = '') {
+function boot(storage = memory(), hash = '', viewer3d) {
   const nodes = new Map();
   const element = () => ({innerHTML: '', textContent: '', value: '', disabled: false, style: {},
     querySelectorAll: () => [], addEventListener() {}, setAttribute() {}, classList: {toggle() {}}, scrollIntoView() {}});
   const document = {getElementById(id) {if (!nodes.has(id)) nodes.set(id, element()); return nodes.get(id);},
     querySelectorAll: () => [], querySelector: element, addEventListener() {}};
   const env = {window: {CATALOG: JSON.parse(JSON.stringify(catalog)), Craft, localStorage: storage, location: {origin: 'https://example.org', pathname: '/', search: '', hash}}, document};
+  if(viewer3d)env.window.Viewer3D=viewer3d;
   env.window.history={replaceState(){env.window.location.hash='';}};
   vm.createContext(env);
   vm.runInContext(fs.readFileSync(path.join(__dirname, '../docs/app.js'), 'utf8'), env);
@@ -195,4 +205,16 @@ test('opening a shared link consumes its fragment and can undo to the previous l
   app.run('replay("undo")');
   assert.equal(app.run('skinIndex'), 2);
   assert.equal(app.run('savedCrafts.length'), 1);
+});
+
+test('3D placement updates the draft, supports undo and preserves saved crafts and front previews',()=>{
+  let mounted,destroyed=0;const updates=[];
+  const viewer3d={create(_host,options){mounted=options;return {update:state=>updates.push(state),destroy(){destroyed++;},lighting(){},spin(){return false;},placing(){}};}};
+  const app=boot(memory(),'',viewer3d);app.run('applySuggestion();saveCraft()');
+  const before=app.run('JSON.stringify(savedCrafts)');mounted.onPlace({x:66,y:44,face:'back'});
+  assert.equal(app.run('placed[0].face'),'back');assert.equal(app.run('JSON.stringify(savedCrafts)'),before);
+  assert.equal(updates.at(-1)[0].face,'back');assert.doesNotMatch(app.nodes.get('placements').innerHTML,/data-uid="1"/);
+  assert.match(app.nodes.get('placement-list').innerHTML,/verso/);
+  app.run('replay("undo")');assert.equal(app.run('placed[0].face'),undefined);assert.ok(destroyed);
+  app.run('setView("2d")');assert.equal(app.run('placed.length'),2);assert.equal(app.nodes.get('stage').hidden,false);
 });

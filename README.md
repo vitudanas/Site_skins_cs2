@@ -7,16 +7,19 @@ Um site para explorar combinações de skins e adesivos do Counter-Strike 2.
 - Quatro skins: AWP Duality, AK-47 Neon Rider, M4A1-S Decimator e USP-S Cortex.
 - Oito adesivos reais e sugestões em três estilos: tom sobre tom, contraste e minimalista.
 - Prévia 2D com até cinco adesivos; arrastar, ajustar com as setas, girar, redimensionar, remover e limpar.
+- Rascunho automático: skin, estilo, posições, rotação e tamanho restaurados ao recarregar.
+- Coleção de até 12 crafts com nomes, abertura e exclusão.
+- Comparação da bancada com uma referência salva e gerador de variações da curadoria.
 - Layout adaptado para celular e computador.
 - Ferramenta WebMCP opcional para configurar a composição em navegadores compatíveis.
 
-A prévia é ilustrativa: perspectiva, proporções, desgaste e efeitos holográficos podem diferir no CS2. Não há integração com inventário Steam, consulta de preços ou visualizador 3D nesta versão. Alterações na bancada ficam apenas na sessão aberta e são descartadas ao recarregar.
+A prévia é ilustrativa: perspectiva, proporções, desgaste e efeitos holográficos podem diferir no CS2. Não há integração com inventário Steam, consulta de preços ou visualizador 3D nesta versão. Rascunho e crafts ficam somente neste navegador, usando armazenamento local; não sincronizam entre aparelhos. Limpar os dados do navegador apaga a coleção. Se o armazenamento estiver indisponível ou cheio, a bancada funciona e informa a falha de salvamento.
 
 ## Executar localmente
 
 Com Node.js instalado, execute `node preview.cjs` e abra o endereço mostrado no terminal. Não é necessário instalar dependências.
 
-Verificação antes de publicar: `node scripts/check-public.cjs`.
+Verificação antes de publicar: `node scripts/check-public.cjs`. Testes do salvamento, validação de dados, gerador e integração da bancada: `node --test scripts/craft.test.cjs`.
 
 ## Hospedagem gratuita
 

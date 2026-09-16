@@ -43,3 +43,16 @@ Não afirmar que existe visualização 3D fiel, catálogo completo, integração
 - main local usa o histórico remoto; branch local-publication-backup preserva os commits anteriores de preparação. Nenhum force push realizado.
 - Para futuras alterações, ler AGENTS.md e FOLLOW.MD, registrar pedidos/ações com relógio real, revisar conteúdo público e executar node scripts/check-public.cjs antes de enviar.
 - A sessão autenticada do navegador permitiu publicar. Conector e autenticação Git local ainda precisam ser corrigidos se forem usados em próximos envios; não pedir nem registrar tokens na conversa.
+
+## Evolução LAB 02 — 2026-09-15T21:06:34-03:00
+
+- Implementados rascunho automático local, coleção com até 12 crafts nomeados, abrir/excluir, comparação com referência e gerador de variações da curadoria.
+- Módulo docs/craft.js carregado antes de app.js. Dados somente neste navegador; limpar dados do navegador remove a coleção. Sem integração Steam, preços ou 3D.
+- Oito testes automatizados passaram (node --test scripts/craft.test.cjs). Checagem pública inclui sintaxe do módulo novo.
+- Publicação da atualização em andamento; verificar o resultado mais recente em FOLLOW.MD.
+
+## LAB 02 publicada e verificada — 2026-09-15T21:08:01-03:00
+
+- A nova versão já está disponível no endereço público. HTTP 200 e correspondência de conteúdo confirmados para HTML, app.js, craft.js e estilos.
+- Etapa atual de evolução concluída. Histórico de preparação preservado em local-lab02-backup; usar main alinhada ao remoto para próxima etapa.
+- Os testes automatizados cobrem armazenamento/validação/gerador e integração por documento simulado. Ainda não houve QA visual da LAB 02 em navegador real.

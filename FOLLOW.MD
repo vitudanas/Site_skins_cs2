@@ -185,3 +185,36 @@ Registro cumulativo de pedidos, decisões, alterações, verificações e pendê
 - REQ-001 e retomadas de publicação: concluídos. Hospedagem gratuita Pages ativa em main /docs com HTTPS. Conector GitHub ainda retorna 403 e Git local ainda sem autenticação utilizável; esses acessos não impediram o envio por navegador.
 
 - Correção final (2026-09-15T20:38:27-03:00): a checagem de whitespace detectou CRLF misturado nas novas entradas documentais; normalizadas as quebras de linha de FOLLOW.MD e CONTINUAR_NO_CODEX.md para LF antes do upload final, sem alterar o conteúdo histórico.
+
+## REQ-006 — Evoluir continuamente o DNA da Skin
+
+**Pedido:** vai desenvolvendo o site ai cada vez inovando mais
+**Horário original da mensagem:** não disponível. **Registro e início da etapa:** 2026-09-15T21:03:40-03:00.
+
+- Interpretado como autorização para implementar e publicar melhorias no site existente. Etapa atual: rascunho automático local, coleção de crafts com nomes, comparação com referência salva e gerador de variações a partir da curadoria existente.
+- Mantidos catálogo real atual, prévia 2D ilustrativa, arquitetura estática e GitHub Pages gratuito já escolhido pelo usuário; sem migração de hospedagem ou serviços pagos.
+- Consultadas orientações Sites de construção/hospedagem para preservar estrutura e escopo. O destino GitHub Pages já autorizado prevalece sobre o destino padrão da skill.
+- Dados salvos somente neste navegador; tratamento de armazenamento indisponível e dados inválidos planejado. Nenhuma integração Steam, preço atual ou fidelidade 3D será alegada.
+
+### Implementação e testes da LAB 02 — 2026-09-15T21:06:34-03:00
+
+- docs/craft.js: criado módulo de validação e armazenamento local versionado; valida skin/estilo/IDs, limite de cinco adesivos e coordenadas/rotação/escala finitas dentro dos limites. Recupera dados corrompidos sem bloquear a bancada; limita coleção a 12 crafts e ignora IDs duplicados ou inválidos. Escritas reportam indisponibilidade/quota.
+- docs/app.js: antes a composição desaparecia ao recarregar; agora restaura o rascunho e persiste seleção de estilo, adição/remoção/limpeza, ajustes de escala/rotação, fim do arraste e movimento por teclado. Coleção com nome, miniaturas, abrir/excluir e referência independente para comparar. Nome do usuário escapado antes de inserir no HTML. Falha de escrita não anuncia sucesso nem inclui um craft não salvo na coleção.
+- docs/app.js: gerador varia posições, escala e rotação dos adesivos sugeridos pelo estilo atual, mantendo a curadoria real existente e posições por arma. Não é recomendação por IA nem renderização 3D.
+- docs/style.css: acrescentados controles do gerador, coleção responsiva, cartões com miniaturas e painel de referência; preservados visual escuro e verde e controles existentes.
+- docs/index.html: LAB 01 alterado para LAB 02; módulo craft.js carregado antes de app.js.
+- scripts/check-public.cjs: agora também valida sintaxe de craft.js.
+- scripts/craft.test.cjs: oito testes automatizados de roundtrip, dados corrompidos/armazenamento indisponível, transformações inválidas, coleção sanitizada, gerador em todas as skins/estilos, integração salvar/restaurar/escapar HTML, falha de quota e referência independente do rascunho.
+- Primeiro ciclo: cinco testes do módulo passaram. No ciclo com integração, um teste falhou porque o documento simulado ainda não havia criado o campo de nome; corrigida a preparação do teste, sem mudança do produto por essa falha. Ciclo final: oito testes passaram.
+- README.md: funcionalidades e limitações de salvamento atualizadas; documentado comando dos testes. CONTINUAR_NO_CODEX.md será atualizado com a nova versão e resultado de publicação.
+- Prévia local respondeu HTTP 200 e foi disponibilizada no aplicativo. Não realizadas inspeções visuais ou testes de navegador nesta etapa, conforme orientação da skill para pedidos sem QA explícito. Testes de integração usam documento simulado, não substituem verificação visual.
+- Checagem pública passou com 27 arquivos. Preparando publicação em GitHub Pages, destino previamente autorizado.
+
+### LAB 02 publicada — 2026-09-15T21:08:01-03:00
+
+- Publicados via navegador autenticado os commits b0db5ea (app, módulo craft, HTML e estilos) e 9154046 (verificador e testes). Histórico remoto preservado; sem force push.
+- Primeira consulta HTTP durante implantação ainda retornava LAB 01; aguardada execução de Pages. Interface Actions confirmou sucesso da execução de publicação da aplicação.
+- Consulta final HTTP dos quatro arquivos públicos index.html, app.js, craft.js e style.css: todos responderam 200 e seus textos coincidiram integralmente com a versão local após normalizar CRLF/LF. LAB 02 entregue.
+- Documentação desta etapa e README atualizados e preparados para publicação na raiz. Histórico local da implementação será preservado em local-lab02-backup e main realinhada ao remoto após envio desses registros, mantendo os arquivos de trabalho.
+- Resultado: rascunho automático, coleção local, comparação com referência e gerador entregues. Oito testes automatizados passaram; revisão e checagem de conteúdo público concluídas. Verificação visual em navegadores reais não realizada nesta etapa.
+- REQ-006: esta etapa concluída; evolução futura permanece orientada por melhorias do produto, sem assumir automação agendada ou serviços pagos.

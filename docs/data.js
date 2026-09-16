@@ -1,8 +1,8 @@
 window.CATALOG={skins:[
-{weapon:'AWP',name:'Duality',image:'assets/awp-duality.png',match:['longevity','dragon'],contrast:['wave'],positions:[[65,37],[62,45],[74,51]]},
-{weapon:'AK-47',name:'Neon Rider',image:'assets/ak-47-neon-rider.png',match:['frog','waveh'],contrast:['crown'],positions:[[61,38],[54,35],[72,42]]},
-{weapon:'M4A1-S',name:'Decimator',image:'assets/m4a1-s-decimator.png',match:['waveh','frog'],contrast:['flame'],positions:[[63,47],[61,57],[73,51]]},
-{weapon:'USP-S',name:'Cortex',image:'assets/usp-s-cortex.png',match:['frog','web'],contrast:['crown'],positions:[[65,37],[73,38],[39,30]]}
+{weapon:'AWP',name:'Duality',image:'assets/awp-duality.png',model:'models/awp-duality.glb',match:['longevity','dragon'],contrast:['wave'],positions:[[65,37],[62,45],[74,51]]},
+{weapon:'AK-47',name:'Neon Rider',image:'assets/ak-47-neon-rider.png',model:'models/ak47-neon-rider.glb',match:['frog','waveh'],contrast:['crown'],positions:[[61,38],[54,35],[72,42]]},
+{weapon:'M4A1-S',name:'Decimator',image:'assets/m4a1-s-decimator.png',model:'models/m4a1s-decimator.glb',match:['waveh','frog'],contrast:['flame'],positions:[[63,47],[61,57],[73,51]]},
+{weapon:'USP-S',name:'Cortex',image:'assets/usp-s-cortex.png',model:'models/usps-cortex.glb',match:['frog','web'],contrast:['crown'],positions:[[65,37],[73,38],[39,30]]}
 ],stickers:[
 {id:'flame',name:'Devouring Flame (Holo)',image:'assets/sticker-devouring-flame-holo.png'},
 {id:'frog',name:'Ultraviolet Poison Frog (Foil)',image:'assets/sticker-ultraviolet-poison-frog-foil.png'},

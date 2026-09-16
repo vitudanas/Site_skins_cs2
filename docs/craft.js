@@ -10,8 +10,10 @@
       if (!p || !catalog.stickers.some(s => s.id === p.id) ||
           !['x', 'y', 'rotation', 'scale'].every(k => Number.isFinite(p[k])) ||
           p.x < 5 || p.x > 95 || p.y < 7 || p.y > 93 ||
-          p.rotation < -180 || p.rotation > 180 || p.scale < .5 || p.scale > 1.8) return null;
-      placed.push({id: p.id, x: p.x, y: p.y, rotation: p.rotation, scale: p.scale});
+          p.rotation < -180 || p.rotation > 180 || p.scale < .5 || p.scale > 1.8 ||
+          (p.face !== undefined && !['front','back'].includes(p.face))) return null;
+      placed.push({id: p.id, x: p.x, y: p.y, rotation: p.rotation, scale: p.scale,
+        ...(p.face === 'back' ? {face: 'back'} : {})});
     }
     return {skinIndex: input.skinIndex, mood: input.mood, placed};
   }

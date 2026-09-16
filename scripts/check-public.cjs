@@ -9,6 +9,6 @@ const context={window:{}};vm.runInNewContext(fs.readFileSync(path.join(root,'doc
 const catalog=context.window.CATALOG;
 for(const item of [...catalog.skins,...catalog.stickers]){if(!fs.existsSync(path.join(root,'docs',item.image)))issues.push('Asset ausente: '+item.image);}
 for(const item of catalog.skins){for(const id of [...item.match,...item.contrast])if(!catalog.stickers.some(s=>s.id===id))issues.push('Sugestão inválida: '+id);}
-for(const file of ['app.js','data.js']){try{new vm.Script(fs.readFileSync(path.join(root,'docs',file),'utf8'));}catch{issues.push('Sintaxe inválida: '+file);}}
+for(const file of ['app.js','data.js','craft.js']){try{new vm.Script(fs.readFileSync(path.join(root,'docs',file),'utf8'));}catch{issues.push('Sintaxe inválida: '+file);}}
 if(!fs.existsSync(path.join(root,'docs/index.html'))||!fs.existsSync(path.join(root,'docs/style.css')))issues.push('Entrada ou estilo ausente');
 if(issues.length){console.error(issues.join('\n'));process.exit(1);}console.log('Verificado: '+new Set(files).size+' arquivos; sem padrões detectados de segredo/caminho privado; assets, sugestões e sintaxe válidos. Revisão do diff ainda necessária.');

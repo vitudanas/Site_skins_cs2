@@ -70,5 +70,49 @@
     "image": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGJai0ki7VeTHjMWxCmme9UJ88IK77UviQAnOiZf2-B1T4P6hJqdpdKjGXWLFwuok57A5GiuxzUpx526HnIr8eSmVPAIgXpQjR7UCshem0oqwjJ5Mgk4",
     "source": "https://github.com/ByMykel/CSGO-API",
     "category": "sticker"
+  },
+  {
+    "name": "AWP | Duality",
+    "category": "3d-model",
+    "file": "docs/models/awp-duality.glb",
+    "source": "https://store.steampowered.com/app/730/CounterStrike_2/",
+    "resource": "weapons/models/awp/weapon_snip_awp.vmdl_c",
+    "paint": "gs_awp_limbo_snake",
+    "geometry": "legacy",
+    "conversion": "Source2Viewer 20.0; unused meshes, skeleton, physics and metadata removed; paint RGB/normal textures resized and embedded as WebP",
+    "rights": "Valve and respective Workshop creators; illustrative rendering, no CS2 shader fidelity claimed"
+  },
+  {
+    "name": "AK-47 | Neon Rider",
+    "category": "3d-model",
+    "file": "docs/models/ak47-neon-rider.glb",
+    "source": "https://store.steampowered.com/app/730/CounterStrike_2/",
+    "resource": "weapons/models/ak47/weapon_rif_ak47.vmdl_c",
+    "paint": "cu_ak_neon_rider",
+    "geometry": "legacy",
+    "conversion": "Source2Viewer 20.0; unused meshes, skeleton, physics and metadata removed; paint RGB/normal textures resized and embedded as WebP",
+    "rights": "Valve and respective Workshop creators; illustrative rendering, no CS2 shader fidelity claimed"
+  },
+  {
+    "name": "M4A1-S | Decimator",
+    "category": "3d-model",
+    "file": "docs/models/m4a1s-decimator.glb",
+    "source": "https://store.steampowered.com/app/730/CounterStrike_2/",
+    "resource": "weapons/models/m4a1_silencer/weapon_rif_m4a1_silencer.vmdl_c",
+    "paint": "gs_m4a1_decimator",
+    "geometry": "legacy",
+    "conversion": "Source2Viewer 20.0; unused meshes, skeleton, physics and metadata removed; paint RGB/normal textures resized and embedded as WebP",
+    "rights": "Valve and respective Workshop creators; illustrative rendering, no CS2 shader fidelity claimed"
+  },
+  {
+    "name": "USP-S | Cortex",
+    "category": "3d-model",
+    "file": "docs/models/usps-cortex.glb",
+    "source": "https://store.steampowered.com/app/730/CounterStrike_2/",
+    "resource": "weapons/models/usp_silencer/weapon_pist_usp_silencer.vmdl_c",
+    "paint": "cu_usp_cut",
+    "geometry": "legacy",
+    "conversion": "Source2Viewer 20.0; unused meshes, skeleton, physics and metadata removed; paint RGB/normal textures resized and embedded as WebP",
+    "rights": "Valve and respective Workshop creators; illustrative rendering, no CS2 shader fidelity claimed"
   }
 ]

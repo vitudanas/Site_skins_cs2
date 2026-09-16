@@ -71,3 +71,17 @@ Não afirmar que existe visualização 3D fiel, catálogo completo, integração
 - Vinte testes automatizados passaram, inclusive exportação/importação simuladas e preservação do rascunho anterior ao abrir compartilhamento.
 - main será alinhada ao remoto; local-lab03-backup preserva preparação. Recursos de LAB 02 e armazenamento local preservados.
 - QA visual e download real em navegador ainda não verificados. Para a próxima evolução, usar as limitações e testes registrados em FOLLOW.MD.
+
+## LAB 04 — Inspeção 3D — 2026-09-15T22:03:04-03:00
+
+- Visualizador WebGL das quatro armas com modelos e pinturas reais, câmera/zoom/frente-verso, luz estúdio/neon/suave, giro automático, posicionamento por clique e foto 3D.
+- Campo opcional face no craft identifica verso; armazenamento e links antigos preservados. Imagens 2D mostram frente; adesivos no verso aparecem na lista.
+- 28 testes automatizados passaram. Testes de 3D usam modelos/cálculos reais com renderer e controles simulados; QA visual/GPU real não realizado.
+- Motor Three 0.180.0 e modelos GLB locais. Luz/material/posições aproximados: sem shader CS2, float/desgaste/raspagem/holografia. Fonte/atribuição em asset-sources e README; temporários privados nunca publicados.
+- Publicação em andamento; verificar última entrada de FOLLOW.MD.
+
+## LAB 04 publicada e verificada — 2026-09-15T22:06:55-03:00
+
+- 3D entregue no endereço público. Os 12 arquivos confirmados por HTTP e correspondência com a versão local; GLBs byte a byte.
+- 28 testes passaram; quatro modelos sem erros/avisos no validador glTF. QA visual/GPU real pendente, sem alegação de fidelidade de shader/efeitos/posição oficial.
+- Preparação preservada em local-lab04-backup e local-lab04-refinement-backup; continuar a partir de main alinhada ao remoto. Próximas alterações devem respeitar campo opcional face e manter compatibilidade com coleção LAB 02 e links LAB 03.

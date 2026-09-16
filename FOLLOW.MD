@@ -250,3 +250,47 @@ Registro cumulativo de pedidos, decisões, alterações, verificações e pendê
 - README.md, FOLLOW.MD e CONTINUAR_NO_CODEX.md preparados para envio final à raiz. Histórico da implementação preservado em local-lab03-backup; após envio, main será realinhada ao remoto por reset mixed, preservando conteúdo e branch de backup.
 - Resultado desta etapa: editor com undo/redo, link de composição, exportação PNG e transferência JSON da coleção. Vinte testes automatizados passaram; sigilo e whitespace revisados. Armazenamento anterior preservado e hospedagem continua gratuita.
 - REQ-007: etapa atual concluída. Nenhuma automação criada ou uso de Megabrain alegado. QA visual em navegador real e inspeção visual do PNG final continuam não realizados.
+
+## REQ-008 — Criar a parte 3D
+
+**Pedido:** e ve se cria a parte 3d logo
+**Horário original:** não disponível. **Registro e início da implementação:** 2026-09-15T21:53:58-03:00.
+
+- Criar visualizador WebGL com câmera, controles de iluminação e adesivos sobre a superfície das armas, preservando editor e coleção existentes.
+- Identificada instalação local de CS2 para extrair geometrias reais com Source2Viewer oficial. Ferramentas e arquivos temporários ficam fora do conteúdo público. Não publicar caminhos privados nem alegar fidelidade das pinturas sem validação.
+
+
+### Implementação e verificação LAB 04 — 2026-09-15T22:03:04-03:00
+
+- docs/models/: quatro modelos GLB reais, com mesh legacy utilizado pelas pinturas Duality, Neon Rider, Decimator e Cortex. Extraídos de CS2 com Source2Viewer 20.0 oficial. Removidos modelos HD alternativos, física, esqueleto, atributos não usados, materiais de gaps e metadados. Cor até 1024 px e normal até 512 px convertidas em WebP e embutidas; modelos entre 790.556 e 1.409.564 bytes. Nenhuma referência externa, caminho privado ou configuração local nos GLBs.
+- docs/three-engine.js e THREE-LICENSE.txt: Three.js 0.180.0, GLTFLoader, OrbitControls e DecalGeometry incluídos localmente em bundle. Carregamento do motor somente ao abrir 3D, uma vez por página. Não exige instalação de dependências para executar o site. Bundle preparado com esbuild 0.15.18 obtido do registro oficial.
+- Primeira tentativa de preparar Three com npm pack falhou porque npm não estava no PATH; pacote obtido diretamente do registro npm e bundle concluído. Temporários e executáveis permanecem na área interna Git, excluídos da publicação.
+- docs/viewer3d.js: renderer WebGL real, geometria centralizada e orientada, luz PBR aproximada, zoom/rotação por mouse/toque/teclado, presets frente/verso, luz estúdio/neon/suave e giro automático respeitando movimento reduzido. Raycast sobre a superfície e DecalGeometry para adesivos; centros 2D próximos à borda adaptados, contagem informa os visíveis. Clique na lateral posiciona frente/verso; foto PNG usa câmera/luz atuais. Tratamento de falha de motor/WebGL/modelo/imagem, cancelamento de carga, descarte de recursos ao trocar modo/arma e pausa de desenho quando documento oculto.
+- docs/app.js, data.js, style.css e index.html: LAB 04 inicia na inspeção 3D; abas mantêm composição 2D, lista selecionável de adesivos identifica verso, sliders sincronizam ambos os modos. Modelos no catálogo único, controles de câmera/luz/foto/posição e layout responsivo. Rascunho, coleção, links e histórico mantidos. Prévia, miniaturas e exportação 2D mostram somente frente; foto 3D permite verso.
+- docs/craft.js: campo opcional face validado; verso preservado em armazenamento/undo/redo/link/backup, formatos antigos continuam válidos sem novo campo obrigatório.
+- Primeira aplicação da integração por script falhou na verificação de um trecho de exportação que era diferente do esperado; nada desse script havia sido escrito. Corrigida a correspondência e reaplicado. Primeiro teste do motor falhou por AbortController ausente no ambiente Node simulado; corrigido o ambiente do teste.
+- scripts/viewer3d.test.cjs e craft.test.cjs: 28 testes passaram. Cobrem modelos reais/limites/texturas embutidas, projeção de adesivos nas quatro armas e em todas as posições da curadoria, coordenadas de clique/raycast no verso, câmera/foto simuladas, recuperação de falhas, cancelamento, movimento reduzido, dados antigos/verso e integração com coleção/histórico.
+- scripts/check-public.cjs: verifica JSON dos GLBs, referências externas, presença dos modelos por catálogo e sintaxe do visualizador/motor. README e asset-sources atualizados com origem, licença do motor e limites de fidelidade. Não reproduz shader de pintura do CS2, float/desgaste/raspagem/holografia nem posições oficiais.
+- Prévia local iniciada e disponibilizada. Não realizada inspeção visual/GPU em navegador real; testes usam geometrias/cálculos reais com renderer, controles e downloads simulados, conforme orientação da skill para pedidos sem QA explícito.
+
+- Revisão staged detectou espaços finais em cinco linhas de shaders do bundle original e linhas vazias finais nos registros; removidos sem mudar comportamento. Preservada formatação dos registros anteriores de asset-sources, acrescentando somente os quatro modelos. Correção registrada em 2026-09-15T22:03:20-03:00.
+
+- Consulta HTTP local: entrada, visualizador, motor e quatro GLBs retornaram 200 e bytes idênticos aos arquivos locais. A primeira expressão de consulta tinha parêntese extra e falhou antes de consultar; corrigida e repetida com sucesso em 2026-09-15T22:03:45-03:00. Dados anteriores de asset-sources preservados, com normalização CRLF/LF na preparação staged.
+
+### Ajuste de normais e publicação LAB 04 — 2026-09-15T22:05:25-03:00
+
+- Publicados os quatro GLBs no commit 0e50f66 e a bancada/motor/licença no 8b2e2dd, mantendo histórico do repositório.
+- Validação adicional de GLB com Khronos gltf-validator 2.0.0-dev.3.10: zero erros nos quatro modelos; aviso de tangentes geradas em runtime nas duas pinturas com normal map. Retidas as tangentes originais em AWP e AK-47 para garantir espaço tangente consistente. Modelos finais: AWP 1.589.288 bytes; AK-47 997.424 bytes; M4A1-S e USP-S mantidos. README ajustado para máximo aproximado de 1,6 MB.
+- Primeira expressão shell para modificar o script de preparo falhou por escape de aspas antes de alterar o arquivo; usado script separado e correção concluída. Nova validação: zero erros e zero avisos nas quatro armas. Todos os 28 testes passaram após ajuste. Preparando envio das duas geometrias refinadas e dos testes/registros.
+
+
+- Correção do registro anterior em 2026-09-15T22:05:40-03:00: os tamanhos finais medidos incluem JSON e padding completos: AWP 1.589.376 bytes e AK-47 997.676 bytes. Os valores anteriores eram estimativas incompletas; arquivos e validação estavam corretos. A primeira tentativa de registrar esta correção falhou por interpolação PowerShell antes de escrever; corrigida e registrada.
+
+### LAB 04 entregue e verificada — 2026-09-15T22:06:55-03:00
+
+- Refinamento de tangentes publicado no commit d79788b. Testes e verificador enviados ao histórico remoto; registro de confirmação disponível no Git.
+- Os 12 arquivos públicos de LAB 04 (HTML, app, craft, catálogo, estilo, visualizador, motor, licença e quatro GLBs) responderam HTTP 200 no GitHub Pages. Textos coincidiram após normalizar CRLF/LF e modelos coincidiram byte a byte com os arquivos locais. Versão 3D entregue no endereço público existente.
+- Resultado: inspeção 3D das quatro armas, rotação/zoom, frente/verso, luz estúdio/neon/suave, giro automático, adesivos sobre a superfície e foto PNG do ângulo atual. Coleção, histórico, links e backups preservam lado dos adesivos. Hospedagem gratuita e sem dependência externa para o 3D.
+- 28 testes automatizados passaram; Khronos gltf-validator: zero erros e zero avisos nos quatro GLBs. Renderer, controle de câmera e download simulados nos testes; QA visual/GPU em navegador real ainda não realizado. Materiais, efeitos e posições continuam ilustrativos conforme aviso da interface.
+- README, atribuição, continuidade e FOLLOW preparados para publicação final. Histórico local preservado em local-lab04-backup e local-lab04-refinement-backup; main será alinhada ao remoto preservando arquivos e backups. Prévia temporária encerrada após publicação; aba pública mantida como entrega.
+- REQ-008 concluído nesta etapa. Não criado agendamento nem alegado uso de Megabrain.

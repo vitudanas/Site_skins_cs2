@@ -10,16 +10,19 @@ Um site para explorar combinações de skins e adesivos do Counter-Strike 2.
 - Rascunho automático: skin, estilo, posições, rotação e tamanho restaurados ao recarregar.
 - Coleção de até 12 crafts com nomes, abertura e exclusão.
 - Comparação da bancada com uma referência salva e gerador de variações da curadoria.
+- Histórico com até 50 estados: desfazer/refazer por botões ou Ctrl/⌘ Z e Shift+Ctrl/⌘ Z.
+- Link para compartilhar somente a composição atual e download de prévia PNG.
+- Exportar/importar coleção em JSON; importação prévia, validada e sem substituir os crafts existentes.
 - Layout adaptado para celular e computador.
 - Ferramenta WebMCP opcional para configurar a composição em navegadores compatíveis.
 
-A prévia é ilustrativa: perspectiva, proporções, desgaste e efeitos holográficos podem diferir no CS2. Não há integração com inventário Steam, consulta de preços ou visualizador 3D nesta versão. Rascunho e crafts ficam somente neste navegador, usando armazenamento local; não sincronizam entre aparelhos. Limpar os dados do navegador apaga a coleção. Se o armazenamento estiver indisponível ou cheio, a bancada funciona e informa a falha de salvamento.
+A prévia é ilustrativa: perspectiva, proporções, desgaste e efeitos holográficos podem diferir no CS2. Não há integração com inventário Steam, consulta de preços ou visualizador 3D nesta versão. Rascunho e crafts ficam somente neste navegador, usando armazenamento local; não sincronizam automaticamente entre aparelhos. Use Exportar coleção e Importar coleção para transferir manualmente. Links contêm somente a composição atual; o nome e o restante da coleção não entram no link. Limpar os dados do navegador apaga a coleção. Se o armazenamento estiver indisponível ou cheio, a bancada funciona e informa a falha de salvamento.
 
 ## Executar localmente
 
 Com Node.js instalado, execute `node preview.cjs` e abra o endereço mostrado no terminal. Não é necessário instalar dependências.
 
-Verificação antes de publicar: `node scripts/check-public.cjs`. Testes do salvamento, validação de dados, gerador e integração da bancada: `node --test scripts/craft.test.cjs`.
+Verificação antes de publicar: `node scripts/check-public.cjs`. Testes do salvamento, validação, histórico, compartilhamento, importação, exportação e integração da bancada: `node --test scripts/craft.test.cjs`.
 
 ## Hospedagem gratuita
 

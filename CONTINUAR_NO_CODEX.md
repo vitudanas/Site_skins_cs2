@@ -56,3 +56,18 @@ Não afirmar que existe visualização 3D fiel, catálogo completo, integração
 - A nova versão já está disponível no endereço público. HTTP 200 e correspondência de conteúdo confirmados para HTML, app.js, craft.js e estilos.
 - Etapa atual de evolução concluída. Histórico de preparação preservado em local-lab02-backup; usar main alinhada ao remoto para próxima etapa.
 - Os testes automatizados cobrem armazenamento/validação/gerador e integração por documento simulado. Ainda não houve QA visual da LAB 02 em navegador real.
+
+## Evolução LAB 03 — 2026-09-15T21:49:38-03:00
+
+- Histórico de edição, links de craft, PNG e transferência manual da coleção via JSON implementados.
+- Armazenamento local da LAB 02 preservado. Links incluem somente composição; coleção/nome ficam locais. JSON pode conter nomes dos crafts e deve permanecer com o usuário.
+- 20 testes automatizados passaram. Verificação visual e downloads em navegador real ainda não realizados; ver relatório no FOLLOW.MD.
+- Megabrain não encontrado e usuário esclareceu que não se referia a uma ferramenta específica; nenhum uso desse recurso alegado.
+- Publicação em GitHub Pages em andamento; consultar resultado mais recente em FOLLOW.MD.
+
+## LAB 03 publicada — 2026-09-15T21:51:01-03:00
+
+- Editor novo entregue no mesmo endereço público. Quatro arquivos públicos confirmados por HTTP 200 e correspondência de conteúdo com a versão local.
+- Vinte testes automatizados passaram, inclusive exportação/importação simuladas e preservação do rascunho anterior ao abrir compartilhamento.
+- main será alinhada ao remoto; local-lab03-backup preserva preparação. Recursos de LAB 02 e armazenamento local preservados.
+- QA visual e download real em navegador ainda não verificados. Para a próxima evolução, usar as limitações e testes registrados em FOLLOW.MD.

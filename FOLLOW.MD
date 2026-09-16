@@ -218,3 +218,35 @@ Registro cumulativo de pedidos, decisões, alterações, verificações e pendê
 - Documentação desta etapa e README atualizados e preparados para publicação na raiz. Histórico local da implementação será preservado em local-lab02-backup e main realinhada ao remoto após envio desses registros, mantendo os arquivos de trabalho.
 - Resultado: rascunho automático, coleção local, comparação com referência e gerador entregues. Oito testes automatizados passaram; revisão e checagem de conteúdo público concluídas. Verificação visual em navegadores reais não realizada nesta etapa.
 - REQ-006: esta etapa concluída; evolução futura permanece orientada por melhorias do produto, sem assumir automação agendada ou serviços pagos.
+
+## REQ-007 — Ampliar a experiência e usar Megabrain
+
+**Pedido:** continue e use todo seu conhecimento pra deixar tudo muito foda desenvolca muito use o megabrain
+**Horário original:** não disponível. **Registro e início da ação:** 2026-09-15T21:45:26-03:00.
+
+- Retomada autorizada: LAB 03 com histórico desfazer/refazer, compartilhamento de composição por link, exportação PNG e backup/restauração da coleção local, mantendo custo zero e GitHub Pages.
+- Megabrain procurado em ferramentas disponíveis, catálogo de plugins e nomes/conteúdo de skills/manifestos locais; nenhum resultado. Solicitada identificação opcional ao usuário, continuando trabalho independente; não alegar uso de recurso indisponível.
+- Privacidade: link compartilha somente a composição atual, sem nomes privados da coleção ou outros crafts; dados no fragmento do link. Backup baixado no dispositivo, sem envio a servidor.
+- Preservar armazenamento da LAB 02 e comportamento real da prévia 2D. Validar entradas compartilhadas/importadas e limites do histórico antes de publicar.
+
+### Esclarecimento e implementação LAB 03 — 2026-09-15T21:49:38-03:00
+
+- Usuário respondeu nao à identificação opcional do Megabrain; entendido como ausência de ferramenta específica. Desenvolvimento continuado com recursos disponíveis. Nenhum uso de Megabrain alegado.
+- docs/craft.js: histórico limitado a 50 estados, cópias independentes, deduplicação de estados e descarte de redo após nova edição. Formato de link versionado e validado, com identidade da skin por arma/nome para resistir a reordenação do catálogo; fragmentos inválidos ou acima de 6000 caracteres rejeitados. Backup JSON versionado e importação até 100 KB, rejeitando importações parciais/inválidas em vez de perder crafts silenciosamente.
+- docs/app.js: desfazer/refazer de mudanças de skin, estilo, adesivos e combinações; ajustes contínuos de slider viram uma etapa ao soltar, arraste registra ao terminar, teclado registra movimentos. Atalhos Ctrl/Command Z, Shift+Ctrl/Command Z e Ctrl Y preservam edição de campos de texto.
+- docs/app.js: compartilhar composição atual por fragmento de URL; copia pelo clipboard quando disponível e oferece campo selecionável como alternativa. Link não inclui nomes da coleção. Ao abrir compartilhamento válido, fragmento consumido para que recarregar preserve ajustes posteriores; desfazer recupera rascunho local anterior na sessão.
+- docs/app.js: exportação PNG 1400x1000 usa canvas e assets locais, com enquadramento proporcional, rotação e escala dos adesivos, recorte da área e aviso de prévia 2D/atribuição. Tratamento de falha de imagem, blob e prevenção de exportação concorrente; nenhuma geração de imagem por IA.
+- docs/app.js: exportar coleção JSON e importar com prévia/ação Adicionar à coleção. Preserva rascunho e crafts existentes, ignora cópias já presentes, reatribui IDs em colisões e impede exceder 12 crafts. Falhas de leitura/validação/armazenamento preservam dados atuais.
+- docs/app.js e docs/style.css: barra de edição e compartilhamento, controles de coleção, mensagens flutuantes de status para ações abaixo da bancada, estado vazio do link e controles de toque. Cabeçalho mais compacto; tema existente mantido.
+- docs/index.html: versão LAB 03. README.md: recursos de edição, compartilhamento e transferência manual descritos sem alegar sincronização automática.
+- scripts/craft.test.cjs: ampliados testes e documento simulado. Ciclos de 8, 15, 19 e 20 testes passaram; adicionadas coberturas de histórico/limite/branching, link inválido/reordenado, backup parcial, merge preservando rascunho, PNG simulado com clipping/falha e link consumido com undo para rascunho anterior.
+- Prévia local respondeu HTTP 200 e disponibilizada. Nenhum QA visual de navegador realizado por não ter sido solicitado; canvas e downloads testados com objetos simulados, não comprovação visual do PNG final.
+- Mantidos armazenamento LAB 02, catálogo existente, Pages gratuito e HTTPS. Preparando publicação e verificação de correspondência dos arquivos públicos.
+
+### LAB 03 publicada e verificada — 2026-09-15T21:51:01-03:00
+
+- Publicados no histórico remoto f79dd6f (quatro arquivos do editor) e 22a6290 (testes), pela sessão autenticada do navegador e sem force push.
+- HTTP dos arquivos públicos index.html, app.js, craft.js e style.css: 200, com correspondência completa à cópia local após normalizar CRLF/LF. Confirma entrega dos arquivos LAB 03; não é validação visual do produto.
+- README.md, FOLLOW.MD e CONTINUAR_NO_CODEX.md preparados para envio final à raiz. Histórico da implementação preservado em local-lab03-backup; após envio, main será realinhada ao remoto por reset mixed, preservando conteúdo e branch de backup.
+- Resultado desta etapa: editor com undo/redo, link de composição, exportação PNG e transferência JSON da coleção. Vinte testes automatizados passaram; sigilo e whitespace revisados. Armazenamento anterior preservado e hospedagem continua gratuita.
+- REQ-007: etapa atual concluída. Nenhuma automação criada ou uso de Megabrain alegado. QA visual em navegador real e inspeção visual do PNG final continuam não realizados.
